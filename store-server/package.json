@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/koa-json": "^2.0.20",
     "@types/koa-router": "^7.4.4",
     "@types/node": "^18.11.15",
     "ts-node": "^10.9.1",
@@ -18,6 +19,7 @@
     "@koa/cors": "^4.0.0",
     "@koa/router": "^12.0.0",
     "@types/koa__router": "^12.0.0",
+    "koa-json": "^2.0.2",
     "koa-router": "^12.0.0"
   }
 }
