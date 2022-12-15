@@ -11,3 +11,5 @@ async function loadFixtures(clearData = false) {
       {id: 2,title : 'Biography'}
   ])
 }
+
+export default loadFixtures
