@@ -8,6 +8,6 @@ async function loadFixtures(clearData = false) {
   
   await db.batchInsert('category',[
       {id: 1,title : 'Fantasy'},
-      {id: 2,title : 'Suspense'}
+      {id: 2,title : 'Biography'}
   ])
 }
