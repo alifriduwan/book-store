@@ -3,6 +3,7 @@ import Category from './model/category';
 import { useEffect, useState } from 'react'
 import Book from './model/Book';
 import BookDetail from './components/BookDetail';
+import BookForm from './components/BookForm';
 
 
 function App() {
@@ -35,12 +36,17 @@ function App() {
           <option value="">All</option>
           {categoryList.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
         </select>
+        <hr />
       </div>
       <hr />
 
           <div>
-            {bookList.map(book=><div key={book.id}><BookDetail {...book}/>
-            <hr /></div>)}
+            {bookList.map(book=>
+            <div key={book.id}>
+              <BookDetail {...book}/>
+              <BookForm book={book} categoryList={categoryList}/>
+            <hr />
+            </div>)}
           </div>
     </div>
   )
