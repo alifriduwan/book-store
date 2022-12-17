@@ -5,6 +5,7 @@ import Category from "../model/category";
 interface Props {
     book: Partial<Book>,
     categoryList: Category[],
+    callbackFn: (book: Partial<Book>) => void
 }
 
 function BookForm(props: Props) {
@@ -12,10 +13,23 @@ function BookForm(props: Props) {
     const priceRef = useRef<HTMLInputElement>(null)
     const stockAmountRef = useRef<HTMLInputElement>(null)
     const categoryRef = useRef<HTMLSelectElement>(null)
+    const onSubmit =async (e:FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      props.callbackFn({
+          id: props.book.id,
+          title: titlleRef.current?.value,
+          price: Number(priceRef.current?.value),
+          stockAmount: Number(stockAmountRef.current?.value),
+          category: {
+              id: Number(categoryRef.current?.value)
+          }
+      })
+  }
+
 
  return (
         <div>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div>
                     Title : <input type="text" defaultValue={props.book.title} ref={titlleRef} required />
                 </div>
@@ -32,6 +46,7 @@ function BookForm(props: Props) {
                         {props.categoryList.map(category => <option key={category.id} value={category.id}>{category.title}</option> )}
                     </select>
                 </div>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
