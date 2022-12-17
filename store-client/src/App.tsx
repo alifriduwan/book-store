@@ -8,26 +8,36 @@ import BookDetail from './components/BookDetail';
 function App() {
   const [categoryList, setCategoryList] = useState<Category[]>([])
   const [bookList, setBookList] = useState<Book[]>([])
+  const [filter, setFilter] = useState<string>('')
 
 
   const fetchCategoryList = async () => {
     const result = await Repo.categories.getAll()
-    if (result) {
-      setCategoryList(result)
-    }
   }
+  const fetchBookList = async () => {
+    const result = await Repo.books.getAll({categoryId: filter})
+    if(result){
+      setBookList(result)
+    }
+  } 
+
 
   useEffect(() => {
     fetchCategoryList()
-  })
+    fetchBookList()
+  
+  },[filter])
 
   return (
     <div>
       <div>
-        {categoryList.map(category => <p key={category.id}> ID : 
-        {category.id} Title : {category.title}</p>)}
-    </div>
-    <hr />
+      <select onChange={e => setFilter(e.target.value)}>
+          <option value="">All</option>
+          {categoryList.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+        </select>
+      </div>
+      <hr />
+
           <div>
             {bookList.map(book=><div key={book.id}><BookDetail {...book}/>
             <hr /></div>)}
