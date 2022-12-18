@@ -16,6 +16,6 @@ app.use(apiRounter.routes)
 
 app.listen(8000)
 
-
+loadFixtures(appConfig.clearDataBeforeLoadingFixture)
 
 
