@@ -31,7 +31,7 @@ export class CategoryRepository implements IRepository<Category> {
     console.log(result.data)
   }
 
-  async delete(id: number|string): Promise<void>{
+  async delete(id: string|number): Promise<void>{
     const result = await axios.delete<Category>(`${this.urlPrefix}/category/${id}`)
     console.log(result.data)
   }

@@ -2,8 +2,8 @@ import { CategoryRepository } from "./CategoryRepository";
 import { BookRepository } from "./BookRepository";
 
 const repositories = {
-    categories: new CategoryRepository(),
-    books:new BookRepository()
+    books:new BookRepository(),
+    categories: new CategoryRepository()
 }
 
 export default repositories

@@ -8,6 +8,6 @@ apiRounter.get('/api/greet', async ( ctx, next) => {
 })
 
 apiRounter.use('/api/category',category.routes())
-apiRounter.use('/api/bbok',book.routes())
+apiRounter.use('/api/book',book.routes())
 
 export default apiRounter

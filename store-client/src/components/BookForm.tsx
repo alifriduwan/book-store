@@ -13,6 +13,7 @@ function BookForm(props: Props) {
     const priceRef = useRef<HTMLInputElement>(null)
     const stockAmountRef = useRef<HTMLInputElement>(null)
     const categoryRef = useRef<HTMLSelectElement>(null)
+    
     const onSubmit =async (e:FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       props.callbackFn({
